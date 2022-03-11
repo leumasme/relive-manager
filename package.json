@@ -1,0 +1,20 @@
+{
+  "name": "typescript-template",
+  "version": "1.0.0",
+  "description": "A Template for a generic TypeScript project",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "npx tsc && node build/index.js",
+    "dev": "npx tsnd --respawn --clear src/index.ts"
+  },
+  "author": "Temm",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
