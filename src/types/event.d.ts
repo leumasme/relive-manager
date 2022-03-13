@@ -6,24 +6,27 @@ interface Event__Static {
     new(): Event; // todo: args?
 }
 
-type MouseEvents = "mousemove" | "mouseenter" | "mouseleave" | "mouseidle" | "mousetick" | "mousedown"
+
+declare type AllEvents = MouseEvents | BehaviorEvents | FocusEvents | KeyboardEvents | ScrollEvents | DocumentLoadingEvents
+    | DocumentClosingEvents | ElementStateEvents | DragndropEvents | VideoEvents;
+declare type MouseEvents = "mousemove" | "mouseenter" | "mouseleave" | "mouseidle" | "mousetick" | "mousedown"
     | "mouseup" | "mousewheel" | "mousedragrequest" | ("dblclick" | "doubleclick") | "tripleclick";
-type BehaviorEvents = "click" | "input" | "change" | "press" | "changing" | "submit" | "reset" | "expand"
+declare type BehaviorEvents = "click" | "input" | "change" | "press" | "changing" | "submit" | "reset" | "expand"
     | "collapse" | "statechange" | "visualstatechange" | "disabledstatechange" | "readonlystatechange" | "contextmenu"
     | "contextmenusetup" | "animationend" | "animationstart" | "animationloop" | "transitionend" | "transitionstart"
-    | "mediachange" | "contentchange" | "inputlangchange" | "pastehtml" | "pastetext" | "pasteimage" | "popuprequest" 
+    | "mediachange" | "contentchange" | "inputlangchange" | "pastehtml" | "pastetext" | "pasteimage" | "popuprequest"
     | "popupready" | "popupdismissing" | "popupdismissed" | "tooltiprequest";
-type FocusEvents = "focusin" | "focusout" | "focus" | "blur";
-type KeyboardEvents = "keydown" | "keyup" | "keypress" | "compositionstart" | "compositionend";
-type ScrollEvents = "scroll" | "scrollanimationstart" | "scrollanimationend";
+declare type FocusEvents = "focusin" | "focusout" | "focus" | "blur";
+declare type KeyboardEvents = "keydown" | "keyup" | "keypress" | "compositionstart" | "compositionend";
+declare type ScrollEvents = "scroll" | "scrollanimationstart" | "scrollanimationend";
 // Document Lifecycle Events
-type DocumentLoadingEvents = "parsed" | ("ready" | "DOMContentLoaded0") | "complete";
-type DocumentClosingEvents = ("close" | "unload") | "beforeunload" | "closerequest";
-type ElementStateEvents = "sizechange" | "visibilitychange";
-type ImageEvents = "load" | "error";
-type PagerEvents = "paginationstart" | "paginationpage" | "paginationend";
-type DragndropEvents = "drag" | "dragenter" | "dragleave" | "drop" | "dragcancel" | "dragaccept" | "willacceptdrop";
-type VideoEvents = "play" | "ended" | "videocoordinate" | "videoframeready";
+declare type DocumentLoadingEvents = "parsed" | ("ready" | "DOMContentLoaded0") | "complete";
+declare type DocumentClosingEvents = ("close" | "unload") | "beforeunload" | "closerequest";
+declare type ElementStateEvents = "sizechange" | "visibilitychange";
+declare type ImageEvents = "load" | "error";
+declare type PagerEvents = "paginationstart" | "paginationpage" | "paginationend";
+declare type DragndropEvents = "drag" | "dragenter" | "dragleave" | "drop" | "dragcancel" | "dragaccept" | "willacceptdrop";
+declare type VideoEvents = "play" | "ended" | "videocoordinate" | "videoframeready";
 
 interface Event {
     bubbles: boolean;

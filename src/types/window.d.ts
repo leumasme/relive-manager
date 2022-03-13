@@ -76,7 +76,7 @@ interface Window {
         boxOf: "border" | "client" | "cursor" | "caret",
         relTo?: "desktop" | "monitor" | "self",
         asPPX?: boolean): number[];
-    screenBox(what: WindowBoxWhat, boxPart?: WindowBoxPart, asPPX: boolean): number[];
+    screenBox(what: WindowBoxWhat, boxPart?: WindowBoxPart, asPPX?: boolean): number[];
     move(x: number, y: number, width?: number, height?: number, client?): boolean;
     moveTo(monitor: number, x: number, y: number, width?: number, height?: number, client?): boolean;
     selectFile(params: {

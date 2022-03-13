@@ -138,14 +138,14 @@ interface Element extends Node {
      * prefix eventname with ^ to handle in capturing phase
      * eventname may contain namespace part like "click.mynamespace"
      */
-    on(eventname: string, selector: string, handler: (this: this, event, matchedElement?) => any): this;
-    on(eventname: string, handler: (this: this, event, matchedElement?) => any): this;
-    off(eventname: string): this;
+    on(eventname: AllEvents, selector: string, handler: (this: this, event: Event, matchedElement: Element) => any): this;
+    on(eventname: AllEvents, handler: (this: this, event: Event) => any): this;
+    off(eventname: AllEvents): this;
     /**
      * eventname may contain namespace part like "click.mynamespace"
      */
-    onGlobalEvent(eventname: string, handler: (this: this, ...args) => any): this;
-    offGlobalEvent(eventname: string): this;
+    onGlobalEvent(eventname: AllEvents, handler: (this: this, ...args) => any): this;
+    offGlobalEvent(eventname: AllEvents): this;
     offGlobalEvent(handler: (...args) => any): this;
     /**
      * Overwrites existing timer on the element.

@@ -1,9 +1,8 @@
-var sys: Sys;
-
 type FileOpenFlags = "a" | "ax" | "a+" | "as" | "as+" | "r" | "r+" | "rs+" | "w" | "wx" | "w+" | "wx+";
-
-interface Sys {
-    fs: {
+/** type 1: file ; type 2: folder */
+type FoundObject = { name: string, type: number }
+declare module "@sys" {
+    export const fs:{
         open(path: string, flags: FileOpenFlags, mode?: number): Promise<File>;
         $open(path: string, flags: FileOpenFlags, mode?: number): File;
         stat(path: string); // complex return type - TODO ... v
@@ -18,27 +17,27 @@ interface Sys {
         $rmdir(path: string): void;
         mkdir(path: string, mode?): Promise<void>;
         copyfile(...args): Promise<unknown>; // Dammit fix your docs!
-        readdir(...args): Promise<unknown>;
-        $readdir(...args): unknown;
+        readdir(...args): Promise<FoundObject[]>;
+        $readdir(...args): FoundObject[];
         readfile(...args): unknown;
         $readfile(...args): ArrayBuffer;
         watch(path: string, callback: (path: string, events: number) => void): WatchFS;
         splitpath(path: string): [dirpath: string, file: string];
-    },
-    spawn(...args): Process;
-    hrtime(...args);
-    gettimeofday(...args);
-    uname(...args);
-    isatty(...args);
-    environ(...args);
-    getenv(...args);
-    setenv(...args);
-    unsetenv(...args);
-    cwd(...args);
-    homedir(...args);
-    tmpdir(...args);
-    exepath(...args);
-    random(...args);
+    };
+    export function spawn(...args): Process;
+    export function hrtime(...args);
+    export function gettimeofday(...args);
+    export function uname(...args);
+    export function isatty(...args);
+    export function environ(...args);
+    export function getenv(...args);
+    export function setenv(...args);
+    export function unsetenv(...args);
+    export function cwd(...args);
+    export function homedir(...args);
+    export function tmpdir(...args);
+    export function exepath(...args);
+    export function random(...args);
 }
 
 interface WatchFS {
