@@ -3,5 +3,7 @@
         "**/node_modules": true
     },
     "css.lint.unknownProperties": "ignore",
-    "css.validate": false
+    "css.validate": false,
+    "emmet.showAbbreviationSuggestions": false,
+    "emmet.showExpandedAbbreviation": "never",
 }
