@@ -1,5 +1,63 @@
 body {
     margin: 0px;
-    padding: 1*;
-    text-align: center;
+    flow: horizontal;
+}
+
+splitter {
+    margin-left: -5px;
+    background: transparent;
+}
+
+video {
+    width: 4*;
+    height: width(56.25%);
+    margin: 8px;
+    image-rendering: optimize-quality;
+    foreground-position: top left;
+}
+
+#sidebar {
+    height: 1*;
+    min-width: 200px;
+    background-color: #252526;
+    color: white;
+}
+
+#studio {
+    background-color: #1E1E1E;
+    color: white;
+    min-width: 200px;
+    height: 1*;
+    width: 1*;
+}
+
+#current-tags {
+    width: 1*;
+    max-width: 200px;
+    margin: 8px;
+}
+
+#add-tag {
+    width: *;
+}
+
+.entry {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    cursor: pointer;
+}
+
+.entry:hover {
+    background-color: #2A2D2E;
+}
+
+.horizontal {
+    flow: horizontal;
+}
+
+.vertical {
+    flow: vertical;
 }

@@ -1,11 +1,29 @@
 <html window-icon="./icon.png">
-    <head>
-        <title>Sciter Typescript Template!</title>
-        <script type="module" src="./js/index.js"></script>
-        <style src="./css/index.css"></style>
-    </head>
-    <body>
-        <h1>Sciter Typescript Template!</h1>
-        <p>This is a template for Sciter-based applications.</p>
-    </body>
+
+<head>
+    <title>Sciter Typescript Template!</title>
+    <script type="module" src="./js/index.js"></script>
+    <style src="./css/index.css"></style>
+</head>
+
+<body>
+    <frameset cols="auto, *">
+        <div id="sidebar">
+            <a>File Listing</a>
+        </div>
+        <splitter />
+        <div id="studio">
+            <div class="horizontal">
+                <video controls></video>
+                <div id="current-tags" class="vertical">
+                    <input type="text" id="add-tag">
+                </div>
+            </div>
+            <div>
+                <a>Buttons here!</a>
+            </div>
+        </div>
+    </frameset>
+</body>
+
 </html>
