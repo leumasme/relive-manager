@@ -11,9 +11,20 @@ splitter {
 video {
     width: 4*;
     height: width(56.25%);
-    margin: 8px;
     image-rendering: optimize-quality;
     foreground-position: top left;
+}
+
+@set subtle-scrollbar-y {
+    .slider {
+        background: #464647;
+        opacity: 0.5;
+        margin: 0;
+    }
+    .base {
+        width: 12px;
+        min-width: 5px;
+    }
 }
 
 #sidebar {
@@ -21,20 +32,25 @@ video {
     min-width: 200px;
     background-color: #252526;
     color: white;
+    overflow-y: scroll-indicator;
+    vertical-scrollbar: subtle-scrollbar-y;
 }
 
 #studio {
     background-color: #1E1E1E;
     color: white;
-    min-width: 200px;
+    min-width: 50%;
     height: 1*;
     width: 1*;
+
+    flow: grid(1 2, 3 3);
+    border-spacing: 8px;
+    padding: 8px;
 }
 
 #current-tags {
     width: 1*;
     max-width: 200px;
-    margin: 8px;
 }
 
 #add-tag {
@@ -44,6 +60,7 @@ video {
 .entry {
     padding-top: 2px;
     padding-bottom: 2px;
+    padding-left: 2px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow-x: hidden;

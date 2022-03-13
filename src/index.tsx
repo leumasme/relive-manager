@@ -7,7 +7,7 @@ Window.this.minSize = [800, 500];
 
 let out = fs.$readdir("Y:/ReLive Videos/Videos");
 
-for (let { name, type } of out.filter(x => x.type == 1).slice(0, 20)) {
+for (let { name, type } of out.filter(x => x.type == 1).slice(0, 40)) {
     sidebar.append(
         <div class="file entry" data-filename={name}>
             <a>{name}</a>
