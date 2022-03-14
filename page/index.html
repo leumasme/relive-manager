@@ -13,7 +13,12 @@
         </div>
         <splitter />
         <div id="studio">
-            <video controls></video>
+            <div id="video-container">
+                <video></video>
+                <div class="video-controls">
+                    <input type="hslider" min=0 max=1000/>
+                </div>
+            </div>
             <div id="current-tags" class="vertical">
                 <input type="text" id="add-tag">
             </div>

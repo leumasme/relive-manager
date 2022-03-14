@@ -9,10 +9,14 @@ splitter {
 }
 
 video {
-    width: 4*;
-    height: width(56.25%);
+    size: *;
     image-rendering: optimize-quality;
-    foreground-position: top left;
+}
+
+input[type=text] {
+    border-radius: 0px;
+    border-color: #494949;
+    background-color: #3C3C3C;
 }
 
 @set subtle-scrollbar-y {
@@ -57,10 +61,20 @@ video {
     width: *;
 }
 
+#video-container {
+    width: 4*;
+    height: width(56.25%);
+    foreground-position: top left;
+}
+
+.video-controls, .video-controls > input {
+    width: *;
+}
+
 .entry {
     padding-top: 2px;
     padding-bottom: 2px;
-    padding-left: 2px;
+    padding-left: 4px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow-x: hidden;
