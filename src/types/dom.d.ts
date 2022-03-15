@@ -9,7 +9,15 @@ interface ElementList {
     // https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/Element.md
 }
 interface Element_Style {
-    // https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/Element.Style.md
+    [key: string];
+    getPropertyValue(name: string);
+    setProperty(name: string, value, important?: boolean);
+    removeProperty(name: string);
+    colorOf(name: string);
+    pixelsOf(name: string): number;
+    imageOf(name: string): Image;
+    variables(vals: { [name: string]: any }): { [name: string]: any };
+    setCursor(data: null | image, hotspotX, hotspotY);
 }
 interface Element_State {
     // https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/Element.State.md
