@@ -1,12 +1,13 @@
 declare module "@storage" {
-    export function open(filename: string, allowWrite?: boolean): Storage | null;
+    export function open(filename: string, allowWrite?: boolean): Storage;
 };
 
 type IndexType = "integer" | "long" | "float" | "date" | "string";
 interface Storage {
+    root: any;
     close();
     commit();
-    createIndex(type: IndexType, unique?: bool): Index | null;
+    createIndex(type: IndexType, unique?: bool): Index;
 }
 
 interface Index extends Iterable {
