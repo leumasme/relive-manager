@@ -16,6 +16,7 @@ declare module "@sys" {
         rmdir(path: string): Promise<void>;
         $rmdir(path: string): void;
         mkdir(path: string, mode?): Promise<void>;
+        $mkdir(path: string, mode?): void;
         copyfile(...args): Promise<unknown>; // Dammit fix your docs!
         readdir(...args): Promise<FoundObject[]>;
         $readdir(...args): FoundObject[];

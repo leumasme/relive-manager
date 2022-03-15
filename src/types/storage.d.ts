@@ -1,4 +1,5 @@
 declare module "@storage" {
+    /** @throws null if the path contains non-existing folders */
     export function open(filename: string, allowWrite?: boolean): Storage;
 };
 
