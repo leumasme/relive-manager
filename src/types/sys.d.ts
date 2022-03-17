@@ -18,7 +18,7 @@ declare module "@sys" {
         mkdir(path: string, mode?): Promise<void>;
         $mkdir(path: string, mode?): void;
         copyfile(...args): Promise<unknown>; // Dammit fix your docs!
-        readdir(...args): Promise<FoundObject[]>;
+        readdir(...args): Promise<Dir>;
         $readdir(...args): FoundObject[];
         readfile(...args): unknown;
         $readfile(...args): ArrayBuffer;
@@ -59,10 +59,14 @@ interface File {
     stat(): Promise<any>;
 }
 
-interface Dir extends AsyncIterator {
+interface DirIteratorResult {
+    done: boolean;
+    value: { name: string, type: number };
+}
+interface Dir { // Like async iterator but missing functions
     path: string;
+    next(): Promise
     close();
-    next();
 }
 
 interface TCP {
