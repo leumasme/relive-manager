@@ -216,6 +216,11 @@ class Element extends Node {
     componentUpdate(obj)
     rangeFromPoint(x, y): Range | null; // TODO Range??? Where is this documented?
     toString(): string;
+
+    // When overwriting element to create your own Component
+    abstract render(): VNode;
+    abstract constructor(props: Record<string, any>, children: VNode[]);
+    abstract constructor();
 }
 
 interface Node {
