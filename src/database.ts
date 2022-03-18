@@ -24,33 +24,36 @@ export type DatabaseRoot = {
     tags: Tag[], // Order here controls tag importance
 }
 export class Database {
-    data: DatabaseRoot;
+    storage: Storage<DatabaseRoot>;
     constructor(dbpath: string) {
         try { fs.$mkdir(dbpath); } catch { }
         try {
             var storage = open(dbpath + "/storage", true);
         } catch (e: any) {
             console.log("Failed to open storage!", [e], dbpath + "/storage");
-            throw "fuck";
+            throw "storage_failed";
         }
+        // console.log(Object.keys(storage.root?.videos))
         if (!storage.root) {
+            console.log("Initializing storage for the first time...")
             storage.root = {
                 videos: [], tags: []
             } as DatabaseRoot;
         }
+        console.log(Object.keys(storage.root).length)
 
-        storage.root.videos; // Preload this element to prevent sciter bug
-        window.data = storage.root;
-        this.data = storage.root;
+        this.storage = storage;
     }
 
     catchup(vidpath: string) {
         let vids = this.deepFindFiles(vidpath);
         for (let path of vids) {
-            if (!this.data.videos.find(v => v.path == path)) {
-                this.data.videos.push({
+            if (!this.storage.root.videos.find(v => v.path == path)) {
+                let filename = path.split("/").pop()!;
+                console.log("Found new Video! " + filename)
+                this.storage.root.videos.push({
                     path: path,
-                    name: path.split("/").pop()!,
+                    name: filename,
                     tags: [],
                     variations: [],
                     seen: false

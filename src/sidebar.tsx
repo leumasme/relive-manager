@@ -14,7 +14,7 @@ export class Sidebar extends Element {
     }
     render() {
         return <div id="sidebar">
-            {this.db.data.videos.map(vid =>
+            {this.db.storage.root.videos.map(vid =>
                 <div class="file entry" data-path={vid.path}>
                     <a>{vid.name}</a>
                 </div>
