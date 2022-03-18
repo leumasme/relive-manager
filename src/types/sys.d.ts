@@ -65,7 +65,7 @@ interface DirIteratorResult {
 }
 interface Dir { // Like async iterator but missing functions
     path: string;
-    next(): Promise
+    next(): Promise<DirIteratorResult>;
     close();
 }
 
