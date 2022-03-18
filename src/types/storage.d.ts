@@ -4,8 +4,8 @@ declare module "@storage" {
 };
 
 type IndexType = "integer" | "long" | "float" | "date" | "string";
-interface Storage {
-    root: any;
+interface Storage<T = any> {
+    root: T;
     close();
     commit();
     createIndex(type: IndexType, unique?: bool): Index;
