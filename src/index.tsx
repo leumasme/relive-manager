@@ -1,48 +1,32 @@
-import { fs } from "@sys";
-const sidebar = document.$("#sidebar")!;
+import { getenv } from "@sys";
+import { Database } from "./database";
+import { Sidebar } from "./sidebar";
+var sidebar = document.$("#sidebar")!;
 const studio = document.$("#studio")!;
 const vid = (document.$("video") as any);
 
 Window.this.minSize = [800, 500];
 
-let out = fs.$readdir("Y:/ReLive Videos/Videos");
+let path = getenv("APPDATA") + "/relive_manager";
+const db = new Database(path);
+console.log("Loaded database!");
 
-for (let { name, type } of out.filter(x => x.type == 1).slice(0, 40)) {
-    sidebar.append(
-        <div class="file entry" data-filename={name}>
-            <a>{name}</a>
-        </div>
-    );
-}
 
-// sidebar.on("click", (evt) => {
-//     console.log("click")
-// })
-// sidebar.on("mousedown", (evt) => {
-//     console.log("mousedown")
-// })
+db.catchup("Y:/ReLive Videos/Videos")
+console.log("Caught up to folder!");
 
-vid.on("start", ()=>{
+sidebar = sidebar.patch(
+    <Sidebar db={db} video={vid.video} />
+);
+
+vid.on("start", () => {
     console.log("start")
     vid.style.border = "2px solid green"
-})
-vid.on("stop", ()=>{
+});
+vid.on("stop", () => {
     console.log("stop")
     vid.style.border = "2px solid red"
-})
-
-sidebar.on("click", ".file.entry", (evt, matched) => {
-    if (!matched) {
-        console.log("Clicked unknown")
-        return;
-    }
-    vid.video.unload();
-    setTimeout(()=>{
-        vid.video.load("Y:/ReLive Videos/Videos/" + matched.getAttribute("data-filename"))
-        vid.video.play();
-        console.log([vid.video.width, vid.video.height])
-    }, 0)
-})
+});
 
 studio.on("click", "video", (evt, matched) => {
     if (vid.video.isPlaying) {

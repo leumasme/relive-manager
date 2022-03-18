@@ -38,6 +38,7 @@ input[type=text] {
     color: white;
     overflow-y: scroll-indicator;
     vertical-scrollbar: subtle-scrollbar-y;
+    color: #CCCCCC;
 }
 
 #studio {
@@ -63,6 +64,10 @@ input[type=text] {
 
 #video-container {
     width: 4*;
+}
+
+#video-container > video {
+    width: *;
     height: width(56.25%);
     foreground-position: top left;
 }
@@ -83,6 +88,10 @@ input[type=text] {
 
 .entry:hover {
     background-color: #2A2D2E;
+}
+
+.entry:focus {
+    background-color: #37373D;
 }
 
 .horizontal {
