@@ -1,9 +1,10 @@
 import { Database } from "./database";
 
 export class Sidebar extends Element {
-    db!: Database;
-    video!: any;
-    this(props: Record<string, any>, kids: VNode[]) {
+    db: Database;
+    video: any;
+    constructor(props: Record<string, any>, kids: VNode[]) {
+        super();
         this.db = props.db;
         this.video = props.video;
     }
