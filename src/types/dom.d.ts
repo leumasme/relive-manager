@@ -42,7 +42,7 @@ interface Comment extends Node {
 }
 
 type VNode = {
-    0: string;
+    0: string | Element; // string or unconstructed class
     1: Record<string, any>;
     2: (string | VNode)[];
 }
@@ -211,9 +211,9 @@ class Element extends Node {
      * patches content of the element by vnode using rules of React[or]
      * @default onlyChildren true 
      */
-    patch(vnode: VNode, onlyChildren?: boolean);
+    patch(vnode: VNode, onlyChildren?: boolean): Element;
     // https://github.com/c-smile/sciter-js-sdk/blob/main/docs/md/Element.md#elementcomponentupdate-obj-
-    componentUpdate(obj)
+    componentUpdate(props: Record<Exclude<keyof this, keyof Element>, any>)
     rangeFromPoint(x, y): Range | null; // TODO Range??? Where is this documented?
     toString(): string;
 
@@ -221,7 +221,14 @@ class Element extends Node {
     abstract render(): VNode;
     abstract constructor(props: Record<string, any>, children: VNode[]);
     abstract constructor();
+
 }
+// Optional Abstract
+interface Element {
+    componentDidMount?(); // After attaching to DOM
+    componentWillUnmount?(); // Before detaching from DOM
+}
+
 
 interface Node {
     readonly nodeName: string;
