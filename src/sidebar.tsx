@@ -2,11 +2,15 @@ import { Database } from "./database";
 
 export class Sidebar extends Element {
     db: Database;
-    video: any;
+    video: VideoBehavior;
+    onElementSelected: (path: string) => void;
     constructor(props: Record<string, any>, kids: VNode[]) {
         super();
         this.db = props.db;
-        this.video = props.video;
+        this.onElementSelected = props.onElementSelected;
+        // this.video = props.video;
+
+        this.video = null as any;
     }
     render() {
         return <div id="sidebar">
@@ -20,12 +24,6 @@ export class Sidebar extends Element {
     ["on click at .file.entry"](evt: Event, matched: Element) {
         console.log("Clicked event yay!")
 
-        this.video.unload();
-        // Immediate-Delay load to render unload first
-        setTimeout(() => {
-            this.video.load(matched.getAttribute("data-path"))
-            console.log("Loaded video!");
-            this.video.play();
-        }, 0)
+        this.onElementSelected(matched.getAttribute("data-path")!);
     }
 }
