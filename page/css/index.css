@@ -19,12 +19,17 @@ input[type=text] {
     background-color: #3C3C3C;
 }
 
+input[type=hslider] {
+    display: block;
+}
+
 @set subtle-scrollbar-y {
     .slider {
         background: #464647;
         opacity: 0.5;
         margin: 0;
     }
+
     .base {
         width: 12px;
         min-width: 5px;
@@ -66,13 +71,13 @@ input[type=text] {
     width: 4*;
 }
 
-#video-container > video {
+#video-container>video {
     width: *;
     height: width(56.25%);
     foreground-position: top left;
 }
 
-.video-controls, .video-controls > input {
+.video-controls, .video-controls>input {
     width: *;
 }
 
