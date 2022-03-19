@@ -146,14 +146,14 @@ class Element extends Node {
      * prefix eventname with ^ to handle in capturing phase
      * eventname may contain namespace part like "click.mynamespace"
      */
-    on(eventname: AllEvents | string, selector: string, handler: (this: this, event: Event, matchedElement: Element) => any): this;
-    on(eventname: AllEvents | string, handler: (this: this, event: Event) => any): this;
-    off(eventname: AllEvents | string): this;
+    on(eventname: AllEvents | string & {}, selector: string, handler: (this: this, event: Event, matchedElement: Element) => any): this;
+    on(eventname: AllEvents | string & {}, handler: (this: this, event: Event) => any): this;
+    off(eventname: AllEvents | string & {}): this;
     /**
      * eventname may contain namespace part like "click.mynamespace"
      */
-    onGlobalEvent(eventname: AllEvents | string, handler: (this: this, ...args) => any): this;
-    offGlobalEvent(eventname: AllEvents | string): this;
+    onGlobalEvent(eventname: AllEvents | string & {}, handler: (this: this, ...args) => any): this;
+    offGlobalEvent(eventname: AllEvents | string & {}): this;
     offGlobalEvent(handler: (...args) => any): this;
     /**
      * Overwrites existing timer on the element.
