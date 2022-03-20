@@ -149,6 +149,7 @@ class Element extends Node {
     on(eventname: AllEvents | string & {}, selector: string, handler: (this: this, event: Event, matchedElement: Element) => any): this;
     on(eventname: AllEvents | string & {}, handler: (this: this, event: Event) => any): this;
     off(eventname: AllEvents | string & {}): this;
+    off(handler: (this: this, event: Event) => any): this;
     /**
      * eventname may contain namespace part like "click.mynamespace"
      */
