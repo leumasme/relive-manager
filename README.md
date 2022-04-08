@@ -9,7 +9,7 @@ The documentation is inconsistent and incomplete, and the only way of solving ma
 Maybe i will continue work on this someday, maybe i will remake it in electron or something similar.
 
 ### Latest issues:
-- [] Video uses system installed decoder, if no usable decoders are found, the video will simply not display. Seemingly no events or anything to detect this
-- [] The video element lacks functionality and takes very long to seek arround in the video
+- [ ] Video uses system installed decoder, if no usable decoders are found, the video will simply not display. Seemingly no events or anything to detect this
+- [ ] The video element lacks functionality and takes very long to seek arround in the video
 - [x] Horizontal slider elements will expand infinitely when dragged to the end [Workarround found]
-- [] The Inspector often freezes, for example whenever null or undefined is logged. My forum thread about this was ignored.
+- [ ] The Inspector often freezes, for example whenever null or undefined is logged. My forum thread about this was ignored.
