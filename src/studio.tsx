@@ -1,4 +1,5 @@
 export class Studio extends Element {
+    vid?: VideoBehavior;
     render() {
         return <div id="studio">
             <div id="video-container">
@@ -14,6 +15,9 @@ export class Studio extends Element {
                 <a>Buttons here!</a>
             </div>
         </div>
+    }
+    componentDidMount() {
+        this.vid = (this.$("video") as any).video;
     }
     loadVideo(path: string) {
         let vid = (this.$("video") as any).video as VideoBehavior;
@@ -31,11 +35,33 @@ export class Studio extends Element {
         elem.style.border = "2px solid red"
     }
     ["on click at video"](evt: Event, elem: Element) {
-        let vid = (elem as any).video as VideoBehavior;
-        if (vid.isPlaying) {
-            vid.stop();
+        if (this.vid!.isPlaying) {
+            this.vid!.stop();
         } else {
-            vid.play();
+            this.vid!.play();
         }
+    }
+    ["on mousedown at input[type=hslider]"](evt: Event, elem: Element) {
+        // this.vid!.stop();
+        console.log("Down")
+    }
+    ["on mouseup at input[type=hslider]"](evt: Event, elem: Element) {
+        console.log("Up")
+        // this.vid!.position = this.vid!.duration * (elem.value / 1000);
+        // this.vid!.play();
+    }
+    ["on change at input[type=hslider]"](evt: Event, elem: Element) {
+        this.vid!.stop();
+        this.vid!.position = this.vid!.duration * (elem.value / 1000);
+    }
+    ["on click at input[type=hslider]"](evt: Event, elem: Element) {
+        this.vid!.play();
+        console.log("Play")
+        let listener = ()=>{
+            this.vid!.stop();
+            console.log("Stoppp")
+            this.$("video")!.off(listener);
+        }
+        this.$("video")!.on("start", listener);
     }
 }
